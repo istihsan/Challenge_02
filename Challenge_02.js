@@ -355,13 +355,6 @@ function getInfoPenjualan(dataPenjualan) {
       .format(number)
       .split(",")[0];
   };
-
-  const totalKeuntungan = dataPenjualan.map(
-    ({ totalTerjual, hargaJual, hargaBeli }) => {
-      return totalTerjual * hargaJual - (totalTerjual - hargaBeli);
-    }
-  );
-
   const countTotalKeuntungan = dataPenjualan.reduce(
     (acc, { totalTerjual, hargaJual, hargaBeli }) => {
       acc += totalTerjual * hargaJual - (totalTerjual - hargaBeli);
@@ -374,11 +367,6 @@ function getInfoPenjualan(dataPenjualan) {
   // console.log(resultTotalKeuntungan);
 
   //Get Total Modal
-  const totalModal = dataPenjualan.map(
-    ({ hargaBeli, sisaStok, totalTerjual }) => {
-      return hargaBeli * (sisaStok + totalTerjual);
-    }
-  );
   const countTotalModal = dataPenjualan.reduce(
     (acc, { hargaBeli, sisaStok, totalTerjual }) => {
       acc += hargaBeli * (sisaStok + totalTerjual);
